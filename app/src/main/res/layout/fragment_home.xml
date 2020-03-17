@@ -1,124 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:res="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/fragment_home__btn_calendar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_monday"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        android:text="Calendar"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__txt_date"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_calendar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fragment_home__btn_monday"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_monday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_monday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_calendar"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_tuesday"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_tuesday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_tuesday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_monday"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_wednesday"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_wednesday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_wednesday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_tuesday"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_thirsday"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_thirsday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_thirsday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_wednesday"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_friday"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_friday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_friday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_thirsday"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_saturday"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_saturday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_saturday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_friday"
-        app:layout_constraintEnd_toStartOf="@id/fragment_home__btn_sunday"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_home__btn_sunday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="@string/week_sunday"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/fragment_home__btn_saturday"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_home__txt_date"
-        android:textColor="@color/colorPinkLight"
-        android:background="@drawable/custom_button"
-        />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
