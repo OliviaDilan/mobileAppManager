@@ -14,4 +14,6 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="calendar">Календарь</string>
 </resources>

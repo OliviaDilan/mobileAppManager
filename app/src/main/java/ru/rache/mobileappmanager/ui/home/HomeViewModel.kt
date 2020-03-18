@@ -10,4 +10,6 @@ class HomeViewModel : ViewModel() {
         value = "Тут будет страница Задач"
     }
     val text: LiveData<String> = _text
+
+
 }
