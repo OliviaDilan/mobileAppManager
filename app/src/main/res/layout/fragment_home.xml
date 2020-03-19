@@ -4,16 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:buttonLeft_drawableTintColor="@android:color/white"
+            app:buttonRight_drawableTintColor="@android:color/white"
+            app:datePattern="LLLL"
+            app:expandIconColor="@android:color/white"
+            app:firstDayOfWeek="monday"
+            app:primaryColor="@color/colorPrimary"
+            app:selectedItem_background="@drawable/circle_white_solid_background"
+            app:selectedItem_textColor="@android:color/black"
+            app:textColor="@android:color/white"
+            app:todayItem_background="@drawable/circle_white_stroke_background"
+            app:todayItem_textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

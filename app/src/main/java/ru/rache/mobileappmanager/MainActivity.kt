@@ -1,5 +1,6 @@
 package ru.rache.mobileappmanager
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -13,13 +14,30 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val locale = Locale("ru")
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(
+            config,
+            baseContext.resources.displayMetrics
+        )
+
+//        val overrideConfiguration: Configuration =
+//            baseContext.resources.configuration
+//        overrideConfiguration.setLocales(LocaleList.forLanguageTags("ru_RU"))
+//        val context: Context = createConfigurationContext(overrideConfiguration)
+//        val resources: Resources = context.resources
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -36,8 +54,9 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_finances, R.id.nav_purchases, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_home, R.id.nav_finances, R.id.nav_purchases, R.id.nav_tools,
+                R.id.nav_slideshow,
+                R.id.nav_share, R.id.nav_send
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
