@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.FragmentTaskRemaining">
+    tools:context=".ui.home.FragmentTaskDone">
 
     <TextView
         android:id="@+id/textview_fragment_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:gravity="center"
-        android:text="Remaining" />
+        android:text="Список выполненных задач" />
 
 </FrameLayout>
