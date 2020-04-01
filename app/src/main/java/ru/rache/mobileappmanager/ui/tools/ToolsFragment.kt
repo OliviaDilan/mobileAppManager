@@ -12,6 +12,7 @@ import ru.rache.mobileappmanager.R
 
 class ToolsFragment : Fragment() {
 
+    
     private lateinit var toolsViewModel: ToolsViewModel
 
     override fun onCreateView(
