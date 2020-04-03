@@ -6,30 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tools_text"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#2F3F9F"
-        android:gravity="center"
-        android:paddingEnd="130dp"
-        android:text="@string/tools_text"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlSymmetry" />
-
-    <ImageButton
-        android:id="@+id/tools_back_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="11dp"
-        android:background="@drawable/ic_tools_back"
-        app:layout_constraintStart_toStartOf="@id/tools_text"
-        app:layout_constraintTop_toTopOf="@id/tools_text"
-        android:contentDescription="@string/menu_home" />
 
     <Button
         android:id="@+id/tools_acc"
@@ -42,9 +18,8 @@
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tools_text" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/tools_access"
