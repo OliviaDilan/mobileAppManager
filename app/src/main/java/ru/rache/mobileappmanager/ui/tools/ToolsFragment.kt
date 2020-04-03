@@ -8,11 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.fragment_tools.*
 import ru.rache.mobileappmanager.R
 
 class ToolsFragment : Fragment() {
 
-    
+
     private lateinit var toolsViewModel: ToolsViewModel
 
     override fun onCreateView(
@@ -29,4 +30,9 @@ class ToolsFragment : Fragment() {
         })
         return root
     }
+
+    private fun abc(){
+            categorie.hasOnClickListeners()
+    }
+
 }

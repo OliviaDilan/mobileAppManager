@@ -15,5 +15,13 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
+    <string name="tools_text">Настройки</string>
+    <string name="tools_acc">Аккаунт</string>
+    <string name="tools_access">Совместный доступ</string>
+    <string name="tools_notification">Звук уведомления</string>
+    <string name="tools_sort">Сортировка</string>
+    <string name="tools_categories">Категории</string>
+    <string name="tools_places">Места</string>
+
     <string name="calendar">Календарь</string>
 </resources>
