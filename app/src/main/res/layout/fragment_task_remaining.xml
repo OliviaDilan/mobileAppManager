@@ -4,13 +4,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.FragmentTaskRemaining">
-
-    <TextView
-        android:id="@+id/textview_fragment_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="26sp"
-        android:gravity="center"
-        android:text="Список невыполненных задач" />
+        android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/et_taskID"
+            android:hint="@string/taskRemaining_taskIDHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/et_taskName"
+            android:hint="@string/taskRemaining_taskNameHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/et_taskText"
+            android:hint="@string/taskRemaining_taskTextHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+<!--    Кнопки          -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_add"
+                android:text="@string/taskRemaining_addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_read"
+                android:text="@string/taskRemaining_readButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/taskRemaining_clearButton" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_update"
+                android:text="@string/taskRemaining_updButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_delete"
+                android:text="@string/taskRemaining_delButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+<!--        Отрисовка задач         -->
+        <ListView
+            android:id="@+id/taskRemaining_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </FrameLayout>

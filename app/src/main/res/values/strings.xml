@@ -16,4 +16,16 @@
     <string name="menu_send">Send</string>
 
     <string name="calendar">Календарь</string>
+
+<!--     fragment_task_remaining-->
+
+    <string name="taskRemaining_taskNameHint">Введите название задачи</string>
+    <string name="taskRemaining_taskTextHint">Введите текст задачи</string>
+    <string name="taskRemaining_taskIDHint">ID</string>
+    <string name="taskRemaining_addButton">Добавить</string>
+    <string name="taskRemaining_readButton">Прочесть</string>
+    <string name="taskRemaining_clearButton">Очистить</string>
+    <string name="taskRemaining_updButton">Обновить</string>
+    <string name="taskRemaining_delButton">Удалить</string>
+
 </resources>

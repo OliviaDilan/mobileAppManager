@@ -28,4 +28,5 @@ class ToolsFragment : Fragment() {
         })
         return root
     }
+
 }
