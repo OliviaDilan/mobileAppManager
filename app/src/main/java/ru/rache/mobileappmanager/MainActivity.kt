@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // Floating Action Button
-
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
             var intent: Intent = Intent(this, TaskManager::class.java)

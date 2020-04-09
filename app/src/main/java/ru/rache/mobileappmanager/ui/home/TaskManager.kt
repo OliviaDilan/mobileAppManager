@@ -21,7 +21,7 @@ class TaskManager : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_manager)
 
-        if (intent.getStringExtra(Const.WHAT).equals(Const.ADD)){
+        if (intent.getStringExtra(WHAT).equals(ADD)){
             taskManagerButton.text = "save"
         } else {
             taskManagerButton.text = "update"
@@ -32,10 +32,10 @@ class TaskManager : AppCompatActivity() {
         taskManagerButton.setOnClickListener{
             if (intent.getStringExtra(WHAT).equals(ADD)){
                 addTask()
-                finish()
+
             } else {
                 updateTask(intent.getParcelableExtra(TASK_KEY))
-                finish()
+
             }
         }
     }
@@ -65,12 +65,14 @@ class TaskManager : AppCompatActivity() {
     fun addTask(){
         if (validateInput()){
             DBHelper.getInstance(this).addTask(taskManagerText?.text.toString())
+            finish()
         }
     }
 
     fun updateTask(task: Task?){
         if (validateInput()){
             DBHelper.getInstance(this).updateTask(task?.id, taskManagerText.text.toString())
+            finish()
         }
     }
 

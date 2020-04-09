@@ -78,17 +78,18 @@ class TaskAdapter() : BaseAdapter(){
             convertView = View.inflate(context, R.layout.item_list, null)
         }
         var txtText: TextView? = convertView?.findViewById(R.id.itemTaskTxt) as TextView
-        var imgEdit: ImageView = convertView.findViewById(R.id.itemTaskImgEdit) as ImageView
         var imgDelete: ImageView = convertView.findViewById(R.id.itemTaskImgDelete) as ImageView
+        // можем нажимать на любую часть задачи
+        var taskItem : RelativeLayout = convertView.findViewById(R.id.taskItem) as RelativeLayout
         txtText?.text = list?.get(position)?.text
 
-        imgEdit.setOnClickListener {
+        taskItem.setOnClickListener {
             var intent = Intent(context, TaskManager::class.java)
             intent.putExtra(WHAT, UPDATE)
             intent.putExtra(TASK_KEY,(list?.get(position) as Parcelable))
             context?.startActivity(intent)
         }
-
+        updateList()
         imgDelete.setOnClickListener{
             DBHelper.getInstance(context!!).deleteTask(list?.get(position)?.id)
             list?.removeAt(position)
