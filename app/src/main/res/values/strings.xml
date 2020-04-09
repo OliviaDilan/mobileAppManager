@@ -17,7 +17,7 @@
 
     <string name="calendar">Календарь</string>
 
-<!--     fragment_task_remaining-->
+    <!--     fragment_task_remaining-->
 
     <string name="taskRemaining_taskNameHint">Введите название задачи</string>
     <string name="taskRemaining_taskTextHint">Введите текст задачи</string>

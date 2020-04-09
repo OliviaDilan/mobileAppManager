@@ -1,34 +1,30 @@
 package ru.rache.mobileappmanager.ui.home
 
 
-import android.content.ContentValues
+import android.app.Activity
 import android.content.Context
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import android.widget.*
 import androidx.fragment.app.Fragment
-import ru.rache.mobileappmanager.DBHelper
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.fragment_task_remaining.*
+import ru.rache.mobileappmanager.MainActivity
+import ru.rache.mobileappmanager.ui.home.db.DBHelper
 import ru.rache.mobileappmanager.R
+import ru.rache.mobileappmanager.ui.home.db.Const.ADD
+import ru.rache.mobileappmanager.ui.home.db.Const.TASK_KEY
+import ru.rache.mobileappmanager.ui.home.db.Const.UPDATE
+import ru.rache.mobileappmanager.ui.home.db.Const.WHAT
+import ru.rache.mobileappmanager.ui.home.db.Task
 
 
-class FragmentTaskRemaining : Fragment(), View.OnClickListener {
-
-    lateinit var etTaskName : EditText
-    lateinit var etTaskText : EditText
-    lateinit var etTaskID : EditText
-    lateinit var dbHelper : DBHelper
-    lateinit var btnAdd : Button
-    lateinit var btnRead : Button
-    lateinit var btnClear : Button
-    lateinit var btnUpdate : Button
-    lateinit var btnDel : Button
-
+class FragmentTaskRemaining() : Fragment() {
+    var adapter: TaskAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,95 +33,80 @@ class FragmentTaskRemaining : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_task_remaining, container, false)
     }
 
-// тут происходит магия, мать твою
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        dbHelper = DBHelper(context)
+        adapter = TaskAdapter(context)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-        btnAdd = view.findViewById(R.id.btn_add)
-        btnAdd.setOnClickListener(this)
-
-        btnRead = view.findViewById(R.id.btn_read)
-        btnRead.setOnClickListener(this)
-
-        btnClear= view.findViewById(R.id.btn_clear)
-        btnClear.setOnClickListener(this)
-
-        btnDel= view.findViewById(R.id.btn_delete)
-        btnDel.setOnClickListener(this)
-
-        btnUpdate= view.findViewById(R.id.btn_update)
-        btnUpdate.setOnClickListener(this)
-
-        etTaskID = view.findViewById(R.id.et_taskID)
-        etTaskName = view.findViewById(R.id.et_taskName)
-        etTaskText = view.findViewById(R.id.et_taskText)
-
+        taskRemaining_list.adapter = adapter
     }
 
-    override fun onClick(v: View) {
-        val taskName: String = etTaskName.text.toString() //getText() or text?
-        val taskText: String = etTaskText.text.toString() //getText() or text?
-        val taskID: String = etTaskID.text.toString()
 
-        val database: SQLiteDatabase = dbHelper.writableDatabase
-        val contentValues: ContentValues = ContentValues()
-
-        when (v.id){
-            R.id.btn_add -> {
-                contentValues.put(dbHelper.KEY_TASKNAME, taskName)
-                contentValues.put(dbHelper.KEY_TASKTEXT, taskText)
-                database.insert(dbHelper.TABLE_TASKS, null, contentValues)
-                }
-            R.id.btn_read -> {
-                val cursor: Cursor = database.query(dbHelper.TABLE_TASKS, null, null, null, null, null, null)
-                if (cursor.moveToFirst()){
-                    val idIndex: Int = cursor.getColumnIndex(dbHelper.KEY_ID)
-                    val taskNameIndex: Int = cursor.getColumnIndex(dbHelper.KEY_TASKNAME)
-                    val taskTextIndex: Int = cursor.getColumnIndex(dbHelper.KEY_TASKTEXT)
-                    do {
-                        Log.d("mLog", "ID = " + cursor.getInt(idIndex) + ", task = " + cursor.getString(taskNameIndex) +
-                                ", text = " + cursor.getString(taskTextIndex))
-                    } while (cursor.moveToNext())
-                } else Log.d("mLog", "0 rows")
-                cursor.close()
-            }
-            R.id.btn_clear -> {
-                database.delete(dbHelper.TABLE_TASKS, null, null)
-            }
-            R.id.btn_update -> {
-                if (!(taskID.equals("", ignoreCase = true))) {
-                    contentValues.put(dbHelper.KEY_TASKNAME, taskName);
-                    contentValues.put(dbHelper.KEY_TASKTEXT, taskText);
-                    val updCount: Int = database.update(
-                        dbHelper.TABLE_TASKS,
-                        contentValues,
-                        dbHelper.KEY_ID + "= ?",
-                        arrayOf<String>(taskID)
-                    )
-                    Log.d("mLog", "updates rows count = $updCount")
-                }
-            }
-            R.id.btn_delete -> {
-                if (!(taskID.equals("", ignoreCase = true))) {
-                    val delCount: Int = database.delete(
-                        dbHelper.TABLE_TASKS,
-                        dbHelper.KEY_ID + "=" + taskID,
-                        null
-                    )
-
-                    Log.d("mLog", "deleted rows count = " + delCount)
-                }
-            }
-        }
-        dbHelper.close()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+/*
+        fab.setOnClickListener{
+            var intent: Intent = Intent(this@FragmentTaskRemaining, TaskManager::class.java)
+            intent.putExtra(WHAT, ADD)
+            startActivity(intent)
+        }*/
     }
 }
 
 
+class TaskAdapter() : BaseAdapter(){
 
+    var list : ArrayList<Task>? = null
+    var context: Context? = null
+
+    constructor(context: Context?) : this(){
+        this.list = DBHelper.getInstance(context!!).getAllTasks()
+        this.context = context
+    }
+
+    fun updateList(){
+        this.list = DBHelper.getInstance(context!!).getAllTasks()
+        notifyDataSetChanged()
+    }
+
+    override fun getView(position: Int, view: View?, parent: ViewGroup?): View {
+        var convertView: View? = view
+        if (convertView == null){
+            convertView = View.inflate(context, R.layout.item_list, null)
+        }
+        var txtText: TextView? = convertView?.findViewById(R.id.itemTaskTxt) as TextView
+        var imgEdit: ImageView = convertView.findViewById(R.id.itemTaskImgEdit) as ImageView
+        var imgDelete: ImageView = convertView.findViewById(R.id.itemTaskImgDelete) as ImageView
+        txtText?.text = list?.get(position)?.text
+
+        imgEdit.setOnClickListener {
+            var intent = Intent(context, TaskManager::class.java)
+            intent.putExtra(WHAT, UPDATE)
+            intent.putExtra(TASK_KEY,(list?.get(position) as Parcelable))
+            context?.startActivity(intent)
+        }
+
+        imgDelete.setOnClickListener{
+            DBHelper.getInstance(context!!).deleteTask(list?.get(position)?.id)
+            list?.removeAt(position)
+            notifyDataSetChanged()
+        }
+        return convertView
+    }
+
+    override fun getItem(position: Int): Task? {
+        return list?.get(position)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getCount(): Int {
+        return list!!.size
+    }
+
+}
