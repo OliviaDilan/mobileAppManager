@@ -24,4 +24,7 @@
     <string name="tools_places">Места</string>
 
     <string name="calendar">Календарь</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.tools.PlacesActivity"></activity>
+        <activity android:name=".ui.tools.CategoriesActivity" />
+        <activity android:name=".ui.tools.SortActivity" />
+        <activity android:name=".ui.tools.VolumeActivity" />
+        <activity android:name=".ui.tools.AccessActivity" />
+        <activity android:name=".ui.tools.AccActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
