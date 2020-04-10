@@ -8,7 +8,6 @@ class Task : Parcelable {
     var text: String = ""
 
     constructor(){
-
     }
 
     constructor(id: Int, text: String) {

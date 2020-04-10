@@ -43,12 +43,10 @@ class HomeFragment : Fragment() {
 
             override fun onItemClick(view: View) {}
             override fun onClickListener() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onDataUpdate() {}
             override fun onDayChanged() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onMonthChange() {}
@@ -77,7 +75,6 @@ class HomeFragment : Fragment() {
                     else -> "Выполненные"
                 }
             }
-
         }
 
         val fragmentAdapter = MyPagerAdapter(childFragmentManager)

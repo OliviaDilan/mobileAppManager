@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import ru.rache.mobileappmanager.ui.home.TaskAdapter
 import ru.rache.mobileappmanager.ui.home.TaskManager
 import ru.rache.mobileappmanager.ui.home.db.Const
 import java.util.*

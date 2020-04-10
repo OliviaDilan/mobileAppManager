@@ -1,22 +1,22 @@
 package ru.rache.mobileappmanager.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.MenuItem
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_task_manager.*
 import ru.rache.mobileappmanager.R
-import ru.rache.mobileappmanager.ui.home.db.Const
 import ru.rache.mobileappmanager.ui.home.db.Const.ADD
 import ru.rache.mobileappmanager.ui.home.db.Const.TASK_KEY
 import ru.rache.mobileappmanager.ui.home.db.Const.WHAT
 import ru.rache.mobileappmanager.ui.home.db.DBHelper
 import ru.rache.mobileappmanager.ui.home.db.Task
 
-class TaskManager : AppCompatActivity() {
 
+class TaskManager : AppCompatActivity() {
+    val adapter = TaskAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_manager)
@@ -32,16 +32,10 @@ class TaskManager : AppCompatActivity() {
         taskManagerButton.setOnClickListener{
             if (intent.getStringExtra(WHAT).equals(ADD)){
                 addTask()
-
             } else {
                 updateTask(intent.getParcelableExtra(TASK_KEY))
-
             }
         }
-    }
-
-    fun logMsg (msg: String){
-        Log.d("TAG", msg)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -65,6 +59,7 @@ class TaskManager : AppCompatActivity() {
     fun addTask(){
         if (validateInput()){
             DBHelper.getInstance(this).addTask(taskManagerText?.text.toString())
+            adapter.updateList()       // работает, но эпилептикам пизда
             finish()
         }
     }
